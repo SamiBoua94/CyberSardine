@@ -11,7 +11,8 @@ def load_all_sprites():
         'swim': [],
         'swim_flipped': [],
         'idle': None,
-        'idle_flipped': None
+        'idle_flipped': None,
+        'plate': None
     }
     
     # Charger les sprites de nage
@@ -33,6 +34,15 @@ def load_all_sprites():
         # Version inversée
         img_flipped = img.transpose(Image.FLIP_LEFT_RIGHT)
         sprites['idle_flipped'] = ImageTk.PhotoImage(img_flipped)
+    except Exception as e:
+        print(f"Erreur: sprite sardine_idle.png non trouvé - {e}")
+    
+    # Charger le sprite de l'assiette
+    try:
+        img = Image.open(f'{SPRITE_DIR}/plate.png')
+        sprites['plate'] = ImageTk.PhotoImage(img)
+    except Exception as e:
+        print(f"Erreur: sprite plate.png non trouvé - {e}")
     except Exception as e:
         print(f"Erreur: sprite sardine_idle.png non trouvé - {e}")
     

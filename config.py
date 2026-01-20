@@ -25,7 +25,7 @@ STATE_CHANGE_CHANCE = 0.01        # 1% de chance de changer d'état (swim/idle)
 # Chute
 FALL_SPEED = 15
 FALL_ANIMATION_INTERVAL = 30  # ms
-WAIT_BEFORE_QUIT = 5000  # ms (5 secondes en bas avant de quitter)
+WAIT_BEFORE_QUIT = 10000  # ms (10 secondes en bas avant de quitter)
 
 # Dossier des sprites
 SPRITE_DIR = 'sprites'

@@ -13,6 +13,11 @@ class AnimationController:
     
     def update(self):
         """Met à jour le sprite affiché selon la direction"""
+        # Ne rien changer si le poisson est "mort" (assiette), pour ne pas écraser le sprite
+        if getattr(self.pet, 'is_dead', False):
+            self.pet.window.after(ANIMATION_SPEED, self.update)
+            return
+
         if self.pet.current_state == 'swim' and self.pet.sprites['swim']:
             self._update_swim_animation()
         elif self.pet.current_state == 'idle':

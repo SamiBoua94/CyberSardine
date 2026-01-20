@@ -39,6 +39,7 @@ class SardineDesktopPet:
         self.current_state = 'swim'
         self.flip = False
         self.is_falling = False
+        self.is_dead = False
         self.drag_data = {"x": 0, "y": 0, "dragging": False}
         
         # Dimensions de l'écran
@@ -67,10 +68,14 @@ class SardineDesktopPet:
     
     def _setup_bindings(self):
         """Configure les événements de la souris"""
+        # Clic gauche: drag pour déplacer
         self.label.bind('<Button-1>', self.actions.start_drag)
         self.label.bind('<B1-Motion>', self.actions.drag)
         self.label.bind('<ButtonRelease-1>', self.actions.stop_drag)
-        self.label.bind('<Button-3>', self.actions.start_fall)
+        # Double-clic: kill (assiette + chute)
+        self.label.bind('<Double-Button-1>', self.actions.transform_and_quit)
+        # Clic droit: kill (assiette + chute)
+        self.label.bind('<Button-3>', self.actions.click_transform_fall)
     
     def _create_context_menu(self):
         """Crée le menu contextuel"""

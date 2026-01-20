@@ -18,7 +18,7 @@ class MovementController:
     
     def update(self):
         """Met à jour la position de la sardine avec mouvement aléatoire et non linéaire"""
-        if not self.pet.drag_data["dragging"] and not self.pet.is_falling:
+        if not self.pet.drag_data["dragging"] and not self.pet.is_falling and not self.pet.is_dead:
             self._apply_random_drift()
             self._apply_velocity_changes()
             self._apply_direction_changes()
